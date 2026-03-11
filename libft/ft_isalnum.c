@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_init.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/08 15:26:24 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/11 17:04:09 by andry-ha         ###   ########.fr       */
+/*   Created: 2026/01/19 15:47:31 by andry-ha          #+#    #+#             */
+/*   Updated: 2026/02/15 08:19:22 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-// void    stack_init(t_stack **a, char **argv)
-// {
-//     return;//Not yet implemented
-// }
+int	ft_isalnum(int c)
+{
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
+	return (0);
+}

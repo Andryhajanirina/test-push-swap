@@ -6,11 +6,12 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:13:44 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/10 09:41:08 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/11 17:07:59 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+// #include "../push_swap.h"
+#include "sorting.h"
 
 /* Trouve l’élément avec le plus petit index */
 static t_stack	*find_min(t_stack *stack)
@@ -60,7 +61,7 @@ void	sort_5(t_stack **a, t_stack **b, int print)
 {
 	int size = stack_size(*a);
 
-	while (stack_size(*a) > 3)
+	while (size > 3)
 	{
 		move_min_top(a, print);
 		pb(a, b, print);

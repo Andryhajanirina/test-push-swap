@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_init.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/08 15:26:24 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/11 17:04:09 by andry-ha         ###   ########.fr       */
+/*   Created: 2026/01/21 15:14:51 by andry-ha          #+#    #+#             */
+/*   Updated: 2026/02/15 08:20:12 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-// void    stack_init(t_stack **a, char **argv)
-// {
-//     return;//Not yet implemented
-// }
+char	*ft_strrchr(const char *s, int c)
+{
+	size_t	i;
+
+	i = ft_strlen(s);
+	while (i > 0)
+	{
+		if ((char)s[i] == (char)c)
+			return ((char *)&s[i]);
+		i--;
+	}
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	return (NULL);
+}

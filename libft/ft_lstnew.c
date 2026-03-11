@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_init.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/08 15:26:24 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/11 17:04:09 by andry-ha         ###   ########.fr       */
+/*   Created: 2026/01/30 09:46:37 by andry-ha          #+#    #+#             */
+/*   Updated: 2026/02/15 08:19:41 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-// void    stack_init(t_stack **a, char **argv)
-// {
-//     return;//Not yet implemented
-// }
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*new_node;
+
+	new_node = malloc(sizeof(t_list));
+	if (!new_node)
+		return (NULL);
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
+}

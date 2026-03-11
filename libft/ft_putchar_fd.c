@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_init.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/08 15:26:24 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/11 17:04:09 by andry-ha         ###   ########.fr       */
+/*   Created: 2026/01/29 07:49:50 by andry-ha          #+#    #+#             */
+/*   Updated: 2026/02/15 09:15:03 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-// void    stack_init(t_stack **a, char **argv)
-// {
-//     return;//Not yet implemented
-// }
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}

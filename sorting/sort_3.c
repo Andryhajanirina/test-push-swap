@@ -6,11 +6,12 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:13:44 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/10 09:39:40 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/11 16:10:11 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+// #include "../push_swap.h"
+#include "sorting.h"
 
 void sort_3(t_stack **a, int print)
 {

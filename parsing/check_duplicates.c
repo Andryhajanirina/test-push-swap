@@ -6,11 +6,12 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 15:27:52 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/09 11:37:24 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/11 16:12:50 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+// #include "../push_swap.h"
+#include "parsing.h"
 
 int	check_duplicates(t_stack *stack)
 {

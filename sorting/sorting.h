@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_init.c                                       :+:      :+:    :+:   */
+/*   sorting.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/08 15:26:24 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/11 17:04:09 by andry-ha         ###   ########.fr       */
+/*   Created: 2026/01/19 16:31:54 by andry-ha          #+#    #+#             */
+/*   Updated: 2026/03/11 17:06:38 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#ifndef SORTING_H
+# define SORTING_H
+# include "../push_swap.h"
+# include "../utils/utils.h"
+# include "../operations/operations.h"
 
-// void    stack_init(t_stack **a, char **argv)
-// {
-//     return;//Not yet implemented
-// }
+void	index_stack(t_stack *a);
+void	sort_stack(t_stack **a, t_stack **b, int print);
+void	sort_3(t_stack **a, int print);
+void	sort_5(t_stack **a, t_stack **b, int print);
+void	radix_sort(t_stack **a, t_stack **b, int print);
+
+#endif

@@ -6,11 +6,12 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 09:36:16 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/09 11:37:24 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/11 16:14:21 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+// #include "../push_swap.h"
+#include "operations.h"
 
 /* ROTATE */
 /* static void rotate(t_stack **stack)

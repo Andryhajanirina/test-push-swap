@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_init.c                                       :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/08 15:26:24 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/11 17:04:09 by andry-ha         ###   ########.fr       */
+/*   Created: 2026/01/19 16:31:54 by andry-ha          #+#    #+#             */
+/*   Updated: 2026/03/11 16:01:53 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#ifndef UTILS_H
+# define UTILS_H
+# include "../push_swap.h"
 
-// void    stack_init(t_stack **a, char **argv)
-// {
-//     return;//Not yet implemented
-// }
+void add_back(t_stack **stack, int value);
+int	stack_size(t_stack *stack);
+int *stack_to_array(t_stack *stack, int size);
+void sort_array(int *arr, int size);
+void assign_index(t_stack *stack, int *arr, int size);
+float compute_disorder(t_stack **stack);
+int binary_search(int *arr, int size, int x);
+
+#endif

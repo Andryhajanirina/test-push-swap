@@ -6,11 +6,12 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 10:05:02 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/10 14:33:32 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/11 16:00:24 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+// #include "../push_swap.h"
+#include "utils.h"
 
 void add_back(t_stack **stack, int value)
 {
