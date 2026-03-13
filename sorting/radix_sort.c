@@ -6,40 +6,11 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:13:44 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/12 14:47:37 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/13 17:38:52 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sorting.h"
-
-/* void buble_sort(int a[], int length)
-{
-	int 		i;
-	int 		j;
-	int 		tmp;
-	static int	swaped;
-	
-	i = 0;
-	while (i < length)
-	{
-		j = 0;
-		swaped = 0;
-		while (j < (length - 1 - i))
-		{
-			if (a[j] > a[j + 1])
-			{
-				tmp = a[j];
-				a[j] = a[j + 1];
-				a[j + 1] = tmp;
-			}
-			swaped = 1;
-			j++;
-		}
-		if (swaped == 1)
-			break;
-		i++;
-	}
-} */
 
 static int	get_max_bits(int size)
 {

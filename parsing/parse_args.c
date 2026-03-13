@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 14:50:30 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/12 14:23:24 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/13 17:36:28 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,20 @@
 #include "parsing.h"
 #include "../utils/libft/libft.h"
 
-int	parse_args(int argc, char **argv, t_stack **a)
+void parse_flags(int argc, char **argv, t_config *cfg)
+{
+    int i = 1;
+    cfg->bench = 0;
+
+    while (i < argc && argv[i][0] == '-')
+    {
+        if (ft_strncmp(argv[i], "-b", 2) == 0)
+            cfg->bench = 1;
+        i++;
+    }
+}
+
+/* int	parse_args(int argc, char **argv, t_stack **a)
 {
 	int	i;
 
@@ -27,4 +40,4 @@ int	parse_args(int argc, char **argv, t_stack **a)
 	if (check_duplicates(*a))
 		return (0);
 	return (1);
-}
+} */

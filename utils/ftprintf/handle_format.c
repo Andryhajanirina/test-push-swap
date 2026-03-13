@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 17:31:13 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/13 10:26:55 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/13 17:31:17 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_print_unsigned(unsigned int n)
 	return (count);
 }
 
-static int	ft_print_float(double n)
+/* static int	ft_print_float(double n)
 {
 	int		count;
 	long	integer;
@@ -58,10 +58,49 @@ static int	ft_print_float(double n)
 		i++;
 	}
 	return (count);
-}
+} */
+
+/* static int ft_print_float(double n, int precision)
+{
+    int count = 0;
+    long integer;
+    double decimal;
+    int i;
+
+    // gérer le signe
+    if (n < 0)
+    {
+        ft_putchar_fd('-', 1);
+        n = -n;
+        count++;
+    }
+
+    // partie entière et fractionnaire
+    integer = (long)n;
+    decimal = n - integer;
+
+    count += ft_print_nbr(integer);
+    ft_putchar_fd('.', 1);
+    count++;
+
+    // multiplier la partie fractionnaire pour la précision et arrondir
+	decimal = decimal * ft_power10(precision) + 0.5;
+    long frac = (long)decimal;
+
+    long div = ft_power10(precision - 1);
+    for (i = 0; i < precision; i++)
+    {
+        count += ft_print_char((frac / div) % 10 + '0');
+        div /= 10;
+    }
+
+    return count;
+} */
 
 int	handle_format(const char format, va_list args)
 {
+	int	precision;
+
 	if (format == 'c')
 		return (ft_print_char(va_arg(args, int)));
 	else if (format == 's')
@@ -69,7 +108,10 @@ int	handle_format(const char format, va_list args)
 	else if (format == 'd' || format == 'i')
 		return (ft_print_nbr(va_arg(args, int)));
 	else if (format == 'f')
-		return (ft_print_float(va_arg(args, double)));
+	{
+		precision = 6;
+		return (ft_print_float(va_arg(args, double), precision));
+	}
 	else if (format == 'u')
 		return (ft_print_unsigned(va_arg(args, unsigned int)));
 	else if (format == 'x')
