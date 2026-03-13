@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_args.c                                       :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/08 14:50:30 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/12 14:23:24 by andry-ha         ###   ########.fr       */
+/*   Created: 2026/02/17 15:57:10 by andry-ha          #+#    #+#             */
+/*   Updated: 2026/02/24 13:32:25 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../push_swap.h"
-#include "parsing.h"
-#include "../utils/libft/libft.h"
+#include "ft_printf.h"
 
-int	parse_args(int argc, char **argv, t_stack **a)
+int	ft_printf(const char *str, ...)
 {
-	int	i;
+	va_list	args;
+	int		i;
+	int		count;
 
-	i = 1;
-	while (i < argc)
+	if (!str)
+		return (0);
+	va_start(args, str);
+	i = 0;
+	count = 0;
+	while (str[i])
 	{
-		add_back(a, ft_atoi(argv[i]));
+		if (str[i] == '%' && str[i + 1])
+		{
+			i++;
+			count += handle_format(str[i], args);
+		}
+		else
+			count += write(1, &str[i], 1);
 		i++;
 	}
-	if (check_duplicates(*a))
-		return (0);
-	return (1);
+	va_end(args);
+	return (count);
 }
