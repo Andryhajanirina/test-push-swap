@@ -6,25 +6,27 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 10:05:02 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/11 16:00:24 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/12 14:46:18 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../push_swap.h"
 #include "utils.h"
 
-void add_back(t_stack **stack, int value)
+void	add_back(t_stack **stack, int value)
 {
-	t_stack *new = malloc(sizeof(t_stack));
-	t_stack *last = *stack;
+	t_stack	*new;
+	t_stack	*last;
 
-	if (!new) return;
+	new = malloc(sizeof(t_stack));
+	last = *stack;
+	if (!new)
+		return ;
 	new->value = value;
 	new->next = NULL;
 	if (*stack == NULL)
 	{
 		*stack = new;
-		return;
+		return ;
 	}
 	while (last->next)
 		last = last->next;
@@ -33,7 +35,7 @@ void add_back(t_stack **stack, int value)
 
 int	stack_size(t_stack *stack)
 {
-	int		count;
+	int	count;
 
 	count = 0;
 	while (stack)
@@ -44,15 +46,14 @@ int	stack_size(t_stack *stack)
 	return (count);
 }
 
-int *stack_to_array(t_stack *stack, int size)
+int	*stack_to_array(t_stack *stack, int size)
 {
-	int *arr;
-	int i;
+	int	*arr;
+	int	i;
 
 	arr = malloc(sizeof(int) * size);
 	if (!arr)
 		return (NULL);
-
 	i = 0;
 	while (stack)
 	{
@@ -63,11 +64,11 @@ int *stack_to_array(t_stack *stack, int size)
 	return (arr);
 }
 
-void sort_array(int *arr, int size)
+void	sort_array(int *arr, int size)
 {
-	int i;
-	int j;
-	int tmp;
+	int	i;
+	int	j;
+	int	tmp;
 
 	i = 0;
 	while (i < size - 1)
@@ -87,9 +88,9 @@ void sort_array(int *arr, int size)
 	}
 }
 
-void assign_index(t_stack *stack, int *arr, int size)
+void	assign_index(t_stack *stack, int *arr, int size)
 {
-	int i;
+	int	i;
 
 	while (stack)
 	{
@@ -99,7 +100,7 @@ void assign_index(t_stack *stack, int *arr, int size)
 			if (stack->value == arr[i])
 			{
 				stack->index = i;
-				break;
+				break ;
 			}
 			i++;
 		}
@@ -107,10 +108,10 @@ void assign_index(t_stack *stack, int *arr, int size)
 	}
 }
 
-float compute_disorder(t_stack **stack)
+float	compute_disorder(t_stack **stack)
 {
-	int	mistakes;
-	int	total_pairs;
+	int		mistakes;
+	int		total_pairs;
 	int		i;
 	int		j;
 	int		size;
@@ -119,10 +120,10 @@ float compute_disorder(t_stack **stack)
 	total_pairs = 0;
 	i = 0;
 	size = stack_size(*stack);
-	while (i < size-1)
+	while (i < size - 1)
 	{
 		j = i + 1;
-		while (j < size-1)
+		while (j < size - 1)
 		{
 			total_pairs += 1;
 			if (stack[i] > stack[j])
@@ -134,23 +135,23 @@ float compute_disorder(t_stack **stack)
 	return ((float)mistakes / (float)total_pairs);
 }
 
-int binary_search(int *arr, int size, int x)
+int	binary_search(int *arr, int size, int x)
 {
-    int low;
-    int high;
-    int mid;
+	int	low;
+	int	high;
+	int	mid;
 
-    low = 0;
-    high = size - 1;
-    while (low <= high)
-    {
-        mid = low + (high - low) / 2;
-        if (arr[mid] < x)
-            low = mid + 1;
-        else if (arr[mid] > x)
-            high = mid - 1;
-        else
-            return (mid);
-    }
-    return (-1);
+	low = 0;
+	high = size - 1;
+	while (low <= high)
+	{
+		mid = low + (high - low) / 2;
+		if (arr[mid] < x)
+			low = mid + 1;
+		else if (arr[mid] > x)
+			high = mid - 1;
+		else
+			return (mid);
+	}
+	return (-1);
 }

@@ -6,7 +6,13 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 16:05:50 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/11 16:05:52 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/12 14:36:29 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "utils.h"
+
+// int     free_stack(t_stack **stack)
+// {
+
+// }

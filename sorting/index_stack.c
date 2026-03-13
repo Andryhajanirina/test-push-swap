@@ -6,27 +6,24 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 16:19:36 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/11 16:10:25 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/12 14:23:46 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../push_swap.h"
 #include "sorting.h"
 
-void index_stack(t_stack *stack)
+void	index_stack(t_stack *stack)
 {
-    int *arr;
-    int size;
+	int	*arr;
+	int	size;
 
-    if (!stack)
+	if (!stack)
 		return ;
-    size = stack_size(stack);
-    arr = stack_to_array(stack, size);
+	size = stack_size(stack);
+	arr = stack_to_array(stack, size);
 	if (!arr)
 		return ;
-
-    sort_array(arr, size);
-    assign_index(stack, arr, size);
-
-    free(arr);
+	sort_array(arr, size);
+	assign_index(stack, arr, size);
+	free(arr);
 }

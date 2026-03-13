@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_args.c                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/08 14:50:30 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/12 14:23:24 by andry-ha         ###   ########.fr       */
+/*   Created: 2026/02/17 15:57:35 by andry-ha          #+#    #+#             */
+/*   Updated: 2026/03/13 10:25:50 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../push_swap.h"
-#include "parsing.h"
-#include "../utils/libft/libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include <stdarg.h>
+# include <unistd.h>
+# include "../libft/libft.h"
 
-int	parse_args(int argc, char **argv, t_stack **a)
-{
-	int	i;
+int		ft_printf(const char *str, ...);
+int		ft_print_nbr(int n);
+int		ft_print_hex(unsigned int n, char *base);
+int		ft_print_ptr(void *ptr);
+int		handle_format(const char format, va_list args);
 
-	i = 1;
-	while (i < argc)
-	{
-		add_back(a, ft_atoi(argv[i]));
-		i++;
-	}
-	if (check_duplicates(*a))
-		return (0);
-	return (1);
-}
+#endif

@@ -6,7 +6,7 @@
 #    By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/21 15:22:13 by andry-ha          #+#    #+#              #
-#    Updated: 2026/02/15 08:22:02 by andry-ha         ###   ########.fr        #
+#    Updated: 2026/03/12 15:14:28 by andry-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,35 +38,38 @@ SRCS = ft_isalpha.c \
        ft_strdup.c
 
 SRCS += ft_substr.c \
-        ft_strjoin.c \
-        ft_strtrim.c \
-        ft_split.c \
-        ft_itoa.c \
-        ft_strmapi.c \
-        ft_striteri.c \
-        ft_putchar_fd.c \
-        ft_putstr_fd.c \
-        ft_putendl_fd.c \
-        ft_putnbr_fd.c
+	ft_strjoin.c \
+	ft_strtrim.c \
+	ft_split.c \
+	ft_itoa.c \
+	ft_strmapi.c \
+	ft_striteri.c \
+	ft_putchar_fd.c \
+	ft_putstr_fd.c \
+	ft_putendl_fd.c \
+	ft_putnbr_fd.c
 
 SRCS += ft_lstnew.c \
-        ft_lstadd_front.c \
-        ft_lstsize.c \
-        ft_lstlast.c \
-        ft_lstadd_back.c \
-        ft_lstdelone.c \
-        ft_lstclear.c \
-        ft_lstiter.c \
-        ft_lstmap.c
+	ft_lstadd_front.c \
+	ft_lstsize.c \
+	ft_lstlast.c \
+	ft_lstadd_back.c \
+	ft_lstdelone.c \
+	ft_lstclear.c \
+	ft_lstiter.c \
+	ft_lstmap.c
 
-OBJS = $(SRCS:.c=.o)
+OBJ_DIR     = OBJS_FILES
+OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 NAME = libft.a
-RM = rm -f
+RM = rm -rf
 
 .PHONY: all clean fclean re
 
 all: $(NAME)
-%.o: %.c
+	
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(OBJ_DIR)
 	$(cc) $(CFLAGS) -c $< -o $@
 
 bonus: all
@@ -75,9 +78,10 @@ $(NAME): $(OBJS)
 	@ar -rcs $(NAME) $(OBJS)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJ_DIR)
 
 fclean:
-	$(RM) $(OBJS) $(NAME)
+	$(RM) $(OBJ_DIR) $(NAME)
+	@echo "The **libft** $(OBJ_DIR) and $(NAME) folder was successfully deleted."
 
 re: fclean all
