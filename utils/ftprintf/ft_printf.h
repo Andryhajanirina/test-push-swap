@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 15:57:35 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/13 10:25:50 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/13 16:41:26 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int		ft_print_nbr(int n);
 int		ft_print_hex(unsigned int n, char *base);
 int		ft_print_ptr(void *ptr);
 int		handle_format(const char format, va_list args);
+int     ft_print_float(double n, int precision);
 
 #endif

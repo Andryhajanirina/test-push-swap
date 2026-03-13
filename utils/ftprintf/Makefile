@@ -6,6 +6,7 @@ LIBFT		=	$(LIBFT_PATH)/libft.a
 OBJ_DIR     = OBJS_FILES
 SRCS		= ft_printf.c \
 			ft_printf_utils.c \
+			ft_print_float.c \
 			handle_format.c
 
 OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))

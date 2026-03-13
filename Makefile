@@ -1,92 +1,59 @@
-NAME		= push_swap
-cc			= cc
-CFLAGS		= -Wall -Wextra -Werror
-# LIBFT_PATH	=	./utils/libft
-# LIBFT		=	$(LIBFT_PATH)/libft.a
-FT_PRINTF_PATH	=	./utils/ftprintf
-FT_PRINTF		=	$(FT_PRINTF_PATH)/libftprintf.a
+NAME        = push_swap
+CC          = cc
+CFLAGS      = -Wall -Wextra -Werror
 
-OPERATIONS_PATH	=	./operations
-OPERATIONS		=	$(OPERATIONS_PATH)/
-
-PARSING_PATH	=	./parsing
-PARSING			=	$(PARSING_PATH)/
-
-SORTING_PATH	=	./sorting
-SORTING			=	$(SORTING_PATH)/
-
-UTILS_PATH	=	./utils
-UTILS			=	$(UTILS_PATH)/
+FT_PRINTF_PATH  = ./utils/ftprintf
+FT_PRINTF       = $(FT_PRINTF_PATH)/libftprintf.a
 
 OBJ_DIR     = OBJS_FILES
 
-SRCS		= push_swap.c
-
-SRCS		+= operations/push.c \
-			operations/reverse_rotate.c \
-			operations/rotate.c \
-			operations/swap.c
-
-SRCS 		+= parsing/parse_args.c \
-			parsing/check_numbers.c \
-			parsing/check_duplicates.c \
-			parsing/stack_init.c
-
-SRCS		+= sorting/index_stack.c \
-			sorting/radix_sort.c \
-			sorting/sort_3.c \
-			sorting/sort_5.c \
-			sorting/sort_stack.c \
-
-SRCS		+= utils/free_stack.c \
-			utils/stack_utils.c
+SRCS        = push_swap.c \
+              operations/push.c \
+              operations/reverse_rotate.c \
+              operations/rotate.c \
+              operations/swap.c \
+              parsing/check_numbers.c \
+              parsing/check_duplicates.c \
+              parsing/stack_init.c \
+              parsing/parse_args.c \
+              sorting/index_stack.c \
+              sorting/radix_sort.c \
+              sorting/sort_3.c \
+              sorting/sort_5.c \
+              sorting/sort_stack.c \
+			  sorting/simple_sort.c \
+			  sorting/medium_sort.c \
+              utils/free_stack.c \
+			  utils/ft_atoi_safe.c \
+              utils/stack_utils.c
 
 OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
-RM = rm -rf
 
-# .PHONY: all clean fclean re libft
-.PHONY: all clean fclean re libftprintf
+RM          = rm -rf
+
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
-
+# compilation des .o
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
-	$(cc) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# $(NAME): $(LIBFT) $(OBJS)
-# 	cp $(LIBFT) $(NAME)
-# 	$(cc) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
-
-# $(LIBFT):
-# 	make -C $(LIBFT_PATH) all
-
+# lien final
 $(NAME): $(FT_PRINTF) $(OBJS)
-	cp $(FT_PRINTF) $(NAME)
-	$(cc) $(CFLAGS) $(OBJS) $(FT_PRINTF) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(FT_PRINTF) -o $(NAME)
 
+# compilation de libftprintf
 $(FT_PRINTF):
 	make -C $(FT_PRINTF_PATH) all
 
-$(OPERATIONS):
-	make -C $(OPERATIONS_PATH) all
-
-$(PARSING):
-	make -C $(PARSING_PATH) all
-
-$(SORTING):
-	make -C $(SORTING_PATH) all
-
-$(UTILS):
-	make -C $(UTILS_PATH) all
-
+# clean
 clean:
-# 	make -C $(LIBFT_PATH) clean
 	make -C $(FT_PRINTF_PATH) clean
 	$(RM) $(OBJ_DIR)
 
 fclean:
-# 	make -C $(LIBFT_PATH) fclean
 	make -C $(FT_PRINTF_PATH) fclean
 	$(RM) $(OBJ_DIR) $(NAME)
 	@echo "The **PUSH SWAP** $(OBJ_DIR) and $(NAME) successfully deleted."

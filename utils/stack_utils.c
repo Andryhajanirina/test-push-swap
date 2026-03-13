@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 10:05:02 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/12 14:46:18 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/13 16:26:47 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,3 +155,19 @@ int	binary_search(int *arr, int size, int x)
 	}
 	return (-1);
 }
+
+#include "../push_swap.h"
+
+/* Trouve l’élément avec le plus petit index */
+t_stack *find_min(t_stack *stack)
+{
+	t_stack *min = stack;
+	while (stack)
+	{
+		if (stack->index < min->index)
+			min = stack;
+		stack = stack->next;
+	}
+	return min;
+}
+
