@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:13:44 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/12 16:54:01 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/13 11:31:57 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	main(int argc, char **argv)
 	b = NULL;
 	if (argc < 2)
 	{
-		ft_printf("Argument < 2");
-		return (0);
+		ft_printf("Auccun argument trouvee");
+		return (-1);
 	}
 	if (!parse_args(argc, argv, &a))
 	{
