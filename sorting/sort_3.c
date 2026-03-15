@@ -6,13 +6,13 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:13:44 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/12 14:47:13 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/15 13:48:14 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sorting.h"
 
-void	sort_3(t_stack **a, int print)
+void	sort_3(t_stack **a, int print, int *count)
 {
 	int	first;
 	int	second;
@@ -23,24 +23,24 @@ void	sort_3(t_stack **a, int print)
 	third = (*a)->next->next->index;
 	// 1, 0, 2
 	if (first > second && first < third && second < third)
-		sa(a, print);
+		sa(a, print, count);
 	//2, 1, 0
 	else if (first > second && second > third && first > third)
 	{
-		sa(a, print);
-		rra(a, print);
+		sa(a, print, count);
+		rra(a, print, count);
 	}
 	//2, 0, 1
 	//3 > 1 < 2
 	else if (first > second && second < third && first > third)
-		ra(a, print);
+		ra(a, print, count);
 	//1, 2, 0 
 	else if (first < second && first > third && second > third)
-		rra(a, print);
+		rra(a, print, count);
 	//0, 2, 1
 	else if (first < second && second > third)
 	{
-		sa(a, print);
-		ra(a, print);
+		sa(a, print, count);
+		ra(a, print, count);
 	}
 }

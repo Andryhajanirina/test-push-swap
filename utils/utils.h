@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:31:54 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/13 16:29:19 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/15 11:46:15 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		binary_search(int *arr, int size, int x);
 // int	free_stack(t_stack **stack);
 void	free_stack(t_stack **stack);
 int     ft_atoi_safe(const char *str, int *out);
+void	ft_free_split(char **split);
 t_stack *find_min(t_stack *stack);
 
 #endif

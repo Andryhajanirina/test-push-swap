@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:31:54 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/13 16:16:56 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/15 14:04:32 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include "../operations/operations.h"
 
 void	index_stack(t_stack *a);
-void	sort_stack(t_stack **a, t_stack **b, int print);
-void	sort_3(t_stack **a, int print);
-void	sort_5(t_stack **a, t_stack **b, int print);
-void	radix_sort(t_stack **a, t_stack **b, int print);
-void	simple_sort(t_stack **a, t_stack **b, int print);
-void	medium_sort(t_stack **a, t_stack **b, int print);
+void	sort_stack(t_stack **a, t_stack **b, int print, int *count);
+void	sort_3(t_stack **a, int print, int *count);
+void	sort_5(t_stack **a, t_stack **b, int print, int *count);
+void	radix_sort(t_stack **a, t_stack **b, int print, int *count);
+void	simple_sort(t_stack **a, t_stack **b, int print, int *count);
+void	medium_sort(t_stack **a, t_stack **b, int print, int *count);
 
 #endif

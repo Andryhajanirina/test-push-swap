@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 13:51:31 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/13 15:02:38 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/15 13:53:40 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,17 @@ static int find_max_pos(t_stack *b)
     return pos;
 }
 
-static void move_max_top(t_stack **b)
+static void move_max_top(t_stack **b, int *count)
 {
     int pos = find_max_pos(*b);
     int size = stack_size(*b);
 
     if (pos <= size / 2)
-        while (pos--) rb(b, 1);
+        while (pos--) rb(b, 1, count);
     else
     {
         pos = size - pos;
-        while (pos--) rrb(b, 1);
+        while (pos--) rrb(b, 1, count);
     }
 }
 
@@ -62,7 +62,7 @@ pour chaque chunk :
     si index dans chunk → pb
     sinon → ra
 */
-void medium_sort(t_stack **a, t_stack **b, int print)
+void medium_sort(t_stack **a, t_stack **b, int print, int *count)
 {
     int size;
     int chunk;
@@ -75,21 +75,21 @@ void medium_sort(t_stack **a, t_stack **b, int print)
     {
         if ((*a)->index <= pushed)
         {
-            pb(a, b, print);
-            rb(b, print);
+            pb(a, b, print, count);
+            rb(b, print, count);
             pushed++;
         }
         else if ((*a)->index <= pushed + chunk)
         {
-            pb(a, b, print);
+            pb(a, b, print, count);
             pushed++;
         }
         else
-            ra(a, print);
+            ra(a, print, count);
     }
     while (*b)
     {
-        move_max_top(b);
-        pa(a, b, print);
+        move_max_top(b, count);
+        pa(a, b, print, count);
     }
 }
