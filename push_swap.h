@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 16:00:22 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/13 17:32:15 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/15 16:54:56 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ typedef struct s_stack
 
 typedef struct s_config
 {
-    int mode;      // SIMPLE, MEDIUM, COMPLEX, ADAPTIVE
+    int simple;
+    int medium;
+    int complex;
+    int adaptive;
     int bench;
 } t_config;
 #endif

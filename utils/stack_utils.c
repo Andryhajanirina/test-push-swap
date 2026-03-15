@@ -6,11 +6,12 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 10:05:02 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/13 17:31:47 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/15 16:55:30 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+#include "../push_swap.h"
 
 void	add_back(t_stack **stack, int value)
 {
@@ -108,7 +109,7 @@ void	assign_index(t_stack *stack, int *arr, int size)
 	}
 }
 
-float	compute_disorder(t_stack **stack)
+/* float	compute_disorder(t_stack **stack)
 {
 	int		mistakes;
 	int		total_pairs;
@@ -133,7 +134,35 @@ float	compute_disorder(t_stack **stack)
 		i++;
 	}
 	return ((float)mistakes / (float)total_pairs);
+} */
+
+float	compute_disorder(t_stack **stack)
+{
+	int		mistakes;
+	int		total_pairs;
+	t_stack	*current;
+	t_stack	*next_node;
+
+	mistakes = 0;
+	total_pairs = 0;
+	current = *stack;
+	while (current && current->next)
+	{
+		next_node = current->next;
+		while (next_node)
+		{
+			total_pairs++;
+			if (current->value > next_node->value)
+				mistakes++;
+			next_node = next_node->next;
+		}
+		current = current->next;
+	}
+	if (total_pairs == 0)
+		return (0.0);
+	return ((float)mistakes / (float)total_pairs);
 }
+
 
 int	binary_search(int *arr, int size, int x)
 {
@@ -156,7 +185,20 @@ int	binary_search(int *arr, int size, int x)
 	return (-1);
 }
 
-#include "../push_swap.h"
+void	ft_free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	if (!split)
+		return ;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
 
 /* Trouve l’élément avec le plus petit index */
 t_stack *find_min(t_stack *stack)
