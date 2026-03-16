@@ -6,11 +6,31 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 16:19:36 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/12 14:23:46 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/16 15:49:37 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sorting.h"
+
+void	assign_index(t_stack *stack, int *arr, int size)
+{
+	int	i;
+
+	while (stack)
+	{
+		i = 0;
+		while (i < size)
+		{
+			if (stack->value == arr[i])
+			{
+				stack->index = i;
+				break ;
+			}
+			i++;
+		}
+		stack = stack->next;
+	}
+}
 
 void	index_stack(t_stack *stack)
 {

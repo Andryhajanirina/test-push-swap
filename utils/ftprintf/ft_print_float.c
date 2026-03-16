@@ -6,57 +6,57 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:44:18 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/13 16:53:37 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/16 16:48:27 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static long ft_power10(int n)
+static long	ft_power10(int n)
 {
-    long result = 1;
-    while (n-- > 0)
-        result *= 10;
-    return result;
+	long result;
+
+	result = 1;
+	while (n-- > 0)
+		result *= 10;
+	return (result);
 }
 
-int ft_print_float(double n, int precision)
+static int	print_decimals(double decimal, int precision)
 {
-    int count = 0;
-    long integer;
-    double decimal;
-    int i;
-    char digit;
+	long	frac;
+	long	div;
+	int		count;
+	char	digit;
 
-    // gérer le signe
-    if (n < 0)
-    {
-        ft_putchar_fd('-', 1);
-        n = -n;
-        count++;
-    }
+	count = 0;
+	frac = (long)(decimal * ft_power10(precision) + 0.5);
+	div = ft_power10(precision - 1);
+	while (precision-- > 0)
+	{
+		digit = (frac / div) % 10 + '0';
+		count += write(1, &digit, 1);
+		div /= 10;
+	}
+	return (count);
+}
 
-    // partie entière et fractionnaire
-    integer = (long)n;
-    decimal = n - integer;
+int	ft_print_float(double n, int precision)
+{
+	int		count;
+	long	integer;
+	double	decimal;
 
-    count += ft_print_nbr(integer);
-    ft_putchar_fd('.', 1);
-    count++;
-
-    // multiplier la partie fractionnaire pour la précision et arrondir
-	decimal = decimal * ft_power10(precision) + 0.5;
-    long frac = (long)decimal;
-
-    long div = ft_power10(precision - 1);
-    i = 0;
-    while ( i < precision)
-    {
-        digit = (frac / div) % 10 + '0';
-        count += write(1, &digit, 1);
-        div /= 10;
-        i++;
-    }
-
-    return count;
+	count = 0;
+	if (n < 0)
+	{
+		count += write(1, "-", 1);
+		n = -n;
+	}
+	integer = (long)n;
+	decimal = n - integer;
+	count += ft_print_nbr(integer);
+	count += write(1, ".", 1);
+	count += print_decimals(decimal, precision);
+	return (count);
 }

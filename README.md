@@ -72,6 +72,29 @@ assert binary_search([1, 3, 5, 7, 9], 3) == 1
 assert binary_search([1, 3, 5, 7, 9], 7) == 3
 ```
 
+```C
+int	binary_search(int *arr, int size, int x)
+{
+	int	low;
+	int	high;
+	int	mid;
+
+	low = 0;
+	high = size - 1;
+	while (low <= high)
+	{
+		mid = low + (high - low) / 2;
+		if (arr[mid] < x)
+			low = mid + 1;
+		else if (arr[mid] > x)
+			high = mid - 1;
+		else
+			return (mid);
+	}
+	return (-1);
+}
+```
+
 - <font color="orange">**O(n)Linear execution time:**</font> An algorithm is said to have O(n) complexity if, during its execution, it requires traversing each input element. The time increases proportionally to the size of the data.
 	* If you have 10 input elements, you will have 10 iterations.
 	* With 10 million elements, you will have 10 million iterations: complexity O(n).

@@ -6,12 +6,11 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 10:05:02 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/15 16:55:30 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/16 16:00:45 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-#include "../push_swap.h"
 
 void	add_back(t_stack **stack, int value)
 {
@@ -52,11 +51,13 @@ int	*stack_to_array(t_stack *stack, int size)
 	int	*arr;
 	int	i;
 
+	if (!stack || size <= 0)
+		return (NULL);
 	arr = malloc(sizeof(int) * size);
 	if (!arr)
 		return (NULL);
 	i = 0;
-	while (stack)
+	while (stack && i < size)
 	{
 		arr[i] = stack->value;
 		stack = stack->next;
@@ -89,102 +90,6 @@ void	sort_array(int *arr, int size)
 	}
 }
 
-void	assign_index(t_stack *stack, int *arr, int size)
-{
-	int	i;
-
-	while (stack)
-	{
-		i = 0;
-		while (i < size)
-		{
-			if (stack->value == arr[i])
-			{
-				stack->index = i;
-				break ;
-			}
-			i++;
-		}
-		stack = stack->next;
-	}
-}
-
-/* float	compute_disorder(t_stack **stack)
-{
-	int		mistakes;
-	int		total_pairs;
-	int		i;
-	int		j;
-	int		size;
-
-	mistakes = 0;
-	total_pairs = 0;
-	i = 0;
-	size = stack_size(*stack);
-	while (i < size - 1)
-	{
-		j = i + 1;
-		while (j < size - 1)
-		{
-			total_pairs += 1;
-			if (stack[i] > stack[j])
-				mistakes += 1;
-			j++;
-		}
-		i++;
-	}
-	return ((float)mistakes / (float)total_pairs);
-} */
-
-float	compute_disorder(t_stack **stack)
-{
-	int		mistakes;
-	int		total_pairs;
-	t_stack	*current;
-	t_stack	*next_node;
-
-	mistakes = 0;
-	total_pairs = 0;
-	current = *stack;
-	while (current && current->next)
-	{
-		next_node = current->next;
-		while (next_node)
-		{
-			total_pairs++;
-			if (current->value > next_node->value)
-				mistakes++;
-			next_node = next_node->next;
-		}
-		current = current->next;
-	}
-	if (total_pairs == 0)
-		return (0.0);
-	return ((float)mistakes / (float)total_pairs);
-}
-
-
-int	binary_search(int *arr, int size, int x)
-{
-	int	low;
-	int	high;
-	int	mid;
-
-	low = 0;
-	high = size - 1;
-	while (low <= high)
-	{
-		mid = low + (high - low) / 2;
-		if (arr[mid] < x)
-			low = mid + 1;
-		else if (arr[mid] > x)
-			high = mid - 1;
-		else
-			return (mid);
-	}
-	return (-1);
-}
-
 void	ft_free_split(char **split)
 {
 	int	i;
@@ -199,17 +104,3 @@ void	ft_free_split(char **split)
 	}
 	free(split);
 }
-
-/* Trouve l’élément avec le plus petit index */
-t_stack *find_min(t_stack *stack)
-{
-	t_stack *min = stack;
-	while (stack)
-	{
-		if (stack->index < min->index)
-			min = stack;
-		stack = stack->next;
-	}
-	return min;
-}
-

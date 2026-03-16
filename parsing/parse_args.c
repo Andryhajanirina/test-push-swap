@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 14:50:30 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/16 13:20:26 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/16 15:29:59 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include "parsing.h"
 #include "../utils/libft/libft.h"
 
-static void init_config(t_config *cfg)
+static void	init_config(t_config *cfg)
 {
 	int	i;
-	
+
 	cfg->simple = 0;
 	cfg->medium = 0;
 	cfg->complex = 0;

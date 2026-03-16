@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   find_min.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/11 16:05:50 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/16 15:42:46 by andry-ha         ###   ########.fr       */
+/*   Created: 2026/03/16 16:00:57 by andry-ha          #+#    #+#             */
+/*   Updated: 2026/03/16 16:01:20 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void	free_stack(t_stack **stack)
+t_stack *find_min(t_stack *stack)
 {
-	t_stack	*tmp;
-
-	while (*stack)
+	t_stack *min = stack;
+	while (stack)
 	{
-		tmp = *stack;
-		*stack = (*stack)->next;
-		free(tmp);
+		if (stack->index < min->index)
+			min = stack;
+		stack = stack->next;
 	}
-	*stack = NULL;
+	return min;
 }

@@ -23,12 +23,13 @@ SRCS        += sorting/index_stack.c \
 			sorting/radix_sort.c \
 			sorting/sort_3.c \
 			sorting/sort_5.c \
-			sorting/sort_stack.c \
 			sorting/simple_sort.c \
 			sorting/medium_sort.c
 
 SRCS        += utils/free_stack.c \
 			utils/ft_atoi_safe.c \
+			utils/compute_disorder.c \
+			utils/find_min.c \
 			utils/stack_utils.c
 
 OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
