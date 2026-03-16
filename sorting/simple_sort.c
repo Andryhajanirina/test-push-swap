@@ -6,14 +6,14 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 13:35:56 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/15 14:17:08 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/16 13:36:25 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sorting.h"
 
 /* Positionner l’élément le plus petit en haut avec rotations */
-static void move_min_top(t_stack **a, int print, int *count)
+static void move_min_top(t_stack **a, t_config *cfg)
 {
 	t_stack *min = find_min(*a);
 	int pos = 0;
@@ -28,24 +28,24 @@ static void move_min_top(t_stack **a, int print, int *count)
 	if (pos <= size / 2)
 	{
 		while (pos-- > 0)
-			ra(a, print, count);
+			ra(a, cfg);
 	}
 	else
 	{
 		pos = size - pos;
 		while (pos-- > 0)
-			rra(a, print, count);
+			rra(a, cfg);
 	}
 }
 
-void	simple_sort(t_stack **a, t_stack **b, int print, int *count)
+void	simple_sort(t_stack **a, t_stack **b, t_config *cfg)
 {
 	while (stack_size(*a) > 3)
 	{
-		move_min_top(a, print, count);
-		pb(a, b, print, count);
+		move_min_top(a, cfg);
+		pb(a, b, cfg);
 	}
-	sort_3(a, print, count);
+	sort_3(a, cfg);
 	while (*b)
-		pa(a, b, print, count);
+		pa(a, b, cfg);
 }

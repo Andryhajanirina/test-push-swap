@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 14:50:30 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/15 16:54:50 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/16 13:20:26 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@
 
 static void init_config(t_config *cfg)
 {
+	int	i;
+	
 	cfg->simple = 0;
 	cfg->medium = 0;
 	cfg->complex = 0;
 	cfg->adaptive = 0;
 	cfg->bench = 0;
+	i = 0;
+	while (i < 11)
+		cfg->ops[i++] = 0;
 }
 
 static int	set_flag(char *arg, t_config *cfg)

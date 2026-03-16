@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 09:36:16 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/15 13:44:37 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/16 13:33:35 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,30 @@ static void	swap(t_stack **stack)
 	*stack = second;
 }
 
-void	sa(t_stack **a, int print, int *count)
+void	sa(t_stack **a, t_config *cfg)
 {
 	swap(a);
-	if (print)
+	if (cfg && !cfg->bench)
 		write(1, "sa\n", 3);
-	if (count)
-		(*count)++;
+	if (cfg && cfg->bench)
+		cfg->ops[SA]++;
 }
 
-void	sb(t_stack **b, int print, int *count)
+void	sb(t_stack **b, t_config *cfg)
 {
 	swap(b);
-	if (print)
+	if (cfg && !cfg->bench)
 		write(1, "sb\n", 3);
-	if (count)
-		(*count)++;
+	if (cfg && cfg->bench)
+		cfg->ops[SB]++;
 }
 
-void	ss(t_stack **a, t_stack **b, int print, int *count)
+void	ss(t_stack **a, t_stack **b, t_config *cfg)
 {
 	swap(a);
 	swap(b);
-	if (print)
+	if (cfg && !cfg->bench)
 		write(1, "ss\n", 3);
-	if (count)
-		(*count)++;
+	if (cfg && cfg->bench)
+		cfg->ops[SS]++;
 }

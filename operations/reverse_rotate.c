@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 09:36:16 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/15 13:43:19 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/16 13:33:09 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,30 @@ static void	reverse_rotate(t_stack **stack)
 	*stack = last;
 }
 
-void	rra(t_stack **a, int print, int *count)
+void	rra(t_stack **a, t_config *cfg)
 {
 	reverse_rotate(a);
-	if (print)
+	if (cfg && !cfg->bench)
 		write(1, "rra\n", 4);
-	if (count)
-		(*count)++;		
+	if (cfg && cfg->bench)
+		cfg->ops[RRA]++;	
 }
 
-void	rrb(t_stack **b, int print, int *count)
+void	rrb(t_stack **b, t_config *cfg)
 {
 	reverse_rotate(b);
-	if (print)
+	if (cfg && !cfg->bench)
 		write(1, "rra\n", 4);
-	if (count)
-		(*count)++;		
+	if (cfg && cfg->bench)
+		cfg->ops[RRB]++;
 }
 
-void	rrr(t_stack **a, t_stack **b, int print, int *count)
+void	rrr(t_stack **a, t_stack **b, t_config *cfg)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	if (print)
+	if (cfg && !cfg->bench)
 		write(1, "rrr\n", 4);
-	if (count)
-		(*count)++;		
+	if (cfg && cfg->bench)
+		cfg->ops[RRR]++;	
 }

@@ -25,7 +25,7 @@ SRCS        += sorting/index_stack.c \
 			sorting/sort_5.c \
 			sorting/sort_stack.c \
 			sorting/simple_sort.c \
-			sorting/medium_sort.C
+			sorting/medium_sort.c
 
 SRCS        += utils/free_stack.c \
 			utils/ft_atoi_safe.c \

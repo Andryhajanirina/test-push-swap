@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 16:00:22 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/15 16:54:56 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/16 12:39:52 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ typedef struct s_config
     int complex;
     int adaptive;
     int bench;
+    int	ops[11];
 } t_config;
 #endif

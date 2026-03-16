@@ -6,26 +6,37 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:31:54 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/15 13:41:56 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/16 13:31:28 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OPERATIONS_H
 # define OPERATIONS_H
 # include "../push_swap.h"
+# define SA 0
+# define SB 1
+# define SS 2
+# define PA 3
+# define PB 4
+# define RA 5
+# define RB 6
+# define RR 7
+# define RRA 8
+# define RRB 9
+# define RRR 10
 
-void	sa(t_stack **a, int print, int *count);
-void	sb(t_stack **b, int print, int *count);
-void	ss(t_stack **a, t_stack **b, int print, int *count);
+void	sa(t_stack **a, t_config *cfg);
+void	sb(t_stack **b, t_config *cfg);
+void	ss(t_stack **a, t_stack **b, t_config *cfg);
 
-void	pa(t_stack **a, t_stack **b, int print, int *count);
-void	pb(t_stack **a, t_stack **b, int print, int *count);
+void	pa(t_stack **a, t_stack **b, t_config *cfg);
+void	pb(t_stack **a, t_stack **b, t_config *cfg);
 
-void	ra(t_stack **a, int print, int *count);
-void	rb(t_stack **b, int print, int *count);
-void	rr(t_stack **a, t_stack **b, int print, int *count);
+void	ra(t_stack **a, t_config *cfg);
+void	rb(t_stack **b, t_config *cfg);
+void	rr(t_stack **a, t_stack **b, t_config *cfg);
 
-void	rra(t_stack **a, int print, int *count);
-void	rrb(t_stack **b, int print, int *count);
-void	rrr(t_stack **a, t_stack **b, int print, int *count);
+void	rra(t_stack **a, t_config *cfg);
+void	rrb(t_stack **b, t_config *cfg);
+void	rrr(t_stack **a, t_stack **b, t_config *cfg);
 #endif

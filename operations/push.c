@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 09:36:16 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/15 13:40:19 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/16 13:32:57 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,20 @@ static void	push(t_stack **src, t_stack **dest)
 	*dest = tmp;
 }
 
-void	pa(t_stack **a, t_stack **b, int print, int *count)
+void	pa(t_stack **a, t_stack **b, t_config *cfg)
 {
 	push(b, a);
-	if (print)
+	if (cfg && !cfg->bench)
 		write(1, "pa\n", 3);
-	if (count)
-		(*count)++;
+	if (cfg && cfg->bench)
+		cfg->ops[PA]++;
 }
 
-void	pb(t_stack **a, t_stack **b, int print, int *count)
+void	pb(t_stack **a, t_stack **b, t_config *cfg)
 {
 	push(a, b);
-	if (print)
+	if (cfg && !cfg->bench)
 		write(1, "pb\n", 3);
-	if (count)
-		(*count)++;		
+	if (cfg && cfg->bench)
+		cfg->ops[PB]++;
 }
