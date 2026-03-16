@@ -8,7 +8,8 @@ FT_PRINTF       = $(FT_PRINTF_PATH)/libftprintf.a
 OBJ_DIR     = OBJS_FILES
 
 SRCS        = push_swap.c
-			operations/push.c \
+
+SRCS        += operations/push.c \
 			operations/reverse_rotate.c \
 			operations/rotate.c \
 			operations/swap.c
