@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:44:18 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/16 16:48:27 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/17 12:58:44 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static long	ft_power10(int n)
 {
-	long result;
+	long	result;
 
 	result = 1;
 	while (n-- > 0)

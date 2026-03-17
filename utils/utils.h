@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:31:54 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/16 15:50:22 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/17 12:57:22 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int		*stack_to_array(t_stack *stack, int size);
 void	sort_array(int *arr, int size);
 float	compute_disorder(t_stack **stack);
 void	free_stack(t_stack **stack);
-int     ft_atoi_safe(const char *str, int *out);
+int		ft_atoi_safe(const char *str, int *out);
 void	ft_free_split(char **split);
-t_stack *find_min(t_stack *stack);
+t_stack	*find_min(t_stack *stack);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 13:35:56 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/16 16:31:32 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/17 13:03:28 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 static void	move_min_top(t_stack **a, t_config *cfg)
 {
 	t_stack	*min;
-	int		pos;
 	t_stack	*tmp;
+	int		pos;
+	int		size;
 
 	min = find_min(*a);
 	pos = 0;
@@ -26,7 +27,7 @@ static void	move_min_top(t_stack **a, t_config *cfg)
 		tmp = tmp->next;
 		pos++;
 	}
-	int size = stack_size(*a);
+	size = stack_size(*a);
 	if (pos <= size / 2)
 	{
 		while (pos-- > 0)
@@ -60,4 +61,3 @@ void	simple_sort(t_stack **a, t_stack **b, t_config *cfg)
 	while (*b)
 		pa(a, b, cfg);
 }
-

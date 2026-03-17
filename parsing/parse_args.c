@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 14:50:30 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/16 15:29:59 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/17 12:43:20 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,14 @@ int	parse_flags(int argc, char **argv, t_config *cfg)
 
 	i = 1;
 	init_config(cfg);
-	while (i < argc && argv[i][0] == '-')
+	while (i < argc)
 	{
-		if (!set_flag(argv[i], cfg))
-			return (-1);
+		if (argv[i][0] == '-' && (!ft_isdigit(argv[i][1])))
+		{
+			if (!set_flag(argv[i], cfg))
+				return (-1);
+		}
 		i++;
 	}
-	return (i);
+	return (1);
 }

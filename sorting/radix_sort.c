@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:13:44 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/16 13:35:28 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/17 13:02:17 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,6 @@ void	radix_sort(t_stack **a, t_stack **b, t_config *cfg)
 		j = 0;
 		while (j < size)
 		{
-			/**
-			 * 1️⃣ on décale les bits
-			 * 2️⃣ on regarde seulement le dernier bit
-			 * 0110 & 0001 = 0
-			 */
-			//Equivalent : ((((*a)->index / 2^i) % 2) == 0)
 			if ((((*a)->index >> i) & 1) == 0)
 				pb(a, b, cfg);
 			else

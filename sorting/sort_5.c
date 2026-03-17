@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:13:44 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/16 13:37:41 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/17 13:02:13 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	sort_5(t_stack **a, t_stack **b, t_config *cfg)
 			ra(a, cfg);
 	}
 	sort_3(a, cfg);
-	/* remettre les deux éléments */
 	if (stack_size(*b) > 1 && (*b)->index < (*b)->next->index)
 		sb(b, cfg);
 	while (*b)

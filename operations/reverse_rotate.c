@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 09:36:16 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/16 13:33:09 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/17 12:59:57 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	rra(t_stack **a, t_config *cfg)
 	if (cfg && !cfg->bench)
 		write(1, "rra\n", 4);
 	if (cfg && cfg->bench)
-		cfg->ops[RRA]++;	
+		cfg->ops[RRA]++;
 }
 
 void	rrb(t_stack **b, t_config *cfg)
@@ -57,5 +57,5 @@ void	rrr(t_stack **a, t_stack **b, t_config *cfg)
 	if (cfg && !cfg->bench)
 		write(1, "rrr\n", 4);
 	if (cfg && cfg->bench)
-		cfg->ops[RRR]++;	
+		cfg->ops[RRR]++;
 }

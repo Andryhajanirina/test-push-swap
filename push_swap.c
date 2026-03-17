@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:13:44 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/16 16:38:28 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/17 12:53:28 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ static void	print_bench_stats(float disorder, t_config cfg)
 static void	choose_strategy(t_stack **a, t_stack **b, t_config *cfg)
 {
 	int		size;
-	float	disorder;
+	float	dis;
 
 	size = stack_size(*a);
-	disorder = compute_disorder(a);
+	dis = compute_disorder(a);
 	if (size < 2)
 		return ;
-	if (cfg->complex || (cfg->adaptive && disorder > 0.5 && size > 100))
+	if (cfg->complex || (cfg->adaptive && dis > 0.5 && size > 100))
 		radix_sort(a, b, cfg);
-	else if (cfg->medium || (cfg->adaptive && disorder >= 0.2 && disorder <= 5))
+	else if (cfg->medium || (cfg->adaptive && dis >= 0.2 && dis <= 0.5))
 		medium_sort(a, b, cfg);
 	else
 		simple_sort(a, b, cfg);

@@ -129,6 +129,86 @@ If : index <= (size / 2)
 Otherwise:
 👉 We use rra
 ```
+
+## Method for Measuring Array Disorder:
+```C
+/**Inversion Counting O(nlogn): The most common measure of disorder for numerical arrays is the number of inversions.
+An inversion is a pair of elements A[i], A[j] such that i < j but A[i] > A[j].
+
+* A sorted array has 0 inversions;
+* A reversed array has ( (n(n-1)) / 2) inversions.
+
+For numerical data, a common quick check for disorder is simply (number of inversions / max possible inversions)
+
+For example :
+Input: arr[] = [2, 4, 1, 3, 5]
+Number of inversions or the total of pairs : 3
+Explanation: The sequence 2, 4, 1, 3, 5 has three inversions (2, 1), (4, 1), (4, 3).
+Output disorder : 0.30
+*/
+float	compute_disorder(int stack[], int size)
+{
+	int		mistakes;
+	int		total_pairs;
+	int i;
+    int j;
+
+	mistakes = 0;
+	total_pairs = 0;
+    i = 0;
+	while (i < size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			total_pairs++;
+			if (stack[i] > stack[j])
+				mistakes++;
+			j++;
+		}
+		i++;
+	}
+	if (total_pairs == 0)
+		return (0.0);
+	return ((float)mistakes / (float)total_pairs);
+}
+```
+## Radix sort explanation
+```C
+void	radix_sort(t_stack **a, t_stack **b, t_config *cfg)
+{
+	int	i;
+	int	j;
+	int	size;
+	int	max_bits;
+
+	size = stack_size(*a);
+	i = 0;
+	max_bits = get_max_bits(size);
+	while (i < max_bits)
+	{
+		j = 0;
+		while (j < size)
+		{
+			/**
+			 * 1️⃣ on décale les bits
+			 * 2️⃣ on regarde seulement le dernier bit
+			 * 0110 & 0001 = 0
+			 */
+			//Equivalent : ((((*a)->index / 2^i) % 2) == 0)
+			if ((((*a)->index >> i) & 1) == 0)
+				pb(a, b, cfg);
+			else
+				ra(a, cfg);
+			j++;
+		}
+		while (*b)
+			pa(a, b, cfg);
+		i++;
+	}
+}
+```
+
 ```md
 push_swap/
 │
