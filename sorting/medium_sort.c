@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 13:51:31 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/16 17:02:15 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/17 18:08:43 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static int	find_max_pos(t_stack *b)
 	int	pos;
 	int	i;
 
+	if (!b)
+		return (-1);
 	max = b->index;
 	pos = 0;
 	i = 0;
-	if (!b)
-		return (-1);
 	while (b)
 	{
 		if (b->index > max)
@@ -66,20 +66,15 @@ int	ft_sqrt_ceil(int nb)
 	return (i);
 }
 
-/* 
-chunk_size = sqrt(n)
-pour chaque chunk :
-	parcourir A
-	si index dans chunk → pb
-	sinon → ra
-*/
 void	medium_sort(t_stack **a, t_stack **b, t_config *cfg)
 {
 	int	chunk;
 	int	pushed;
 
+	if (!a || !*a)
+		return ;
 	chunk = ft_sqrt_ceil(stack_size(*a));
-	pushed = 0;
+	pushed = -1;
 	while (*a)
 	{
 		if ((*a)->index <= pushed && ++pushed)

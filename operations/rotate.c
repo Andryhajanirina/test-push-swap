@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 09:36:16 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/16 13:33:25 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/17 17:39:42 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,18 @@ static void	rotate(t_stack **stack)
 void	ra(t_stack **a, t_config *cfg)
 {
 	rotate(a);
-	if (cfg && !cfg->bench)
+	if (cfg && cfg->bench == 0)
 		write(1, "ra\n", 3);
-	if (cfg && cfg->bench)
+	if (cfg && cfg->bench == 1)
 		cfg->ops[RA]++;
 }
 
 void	rb(t_stack **b, t_config *cfg)
 {
 	rotate(b);
-	if (cfg && !cfg->bench)
+	if (cfg && cfg->bench == 0)
 		write(1, "rb\n", 3);
-	if (cfg && cfg->bench)
+	if (cfg && cfg->bench == 1)
 		cfg->ops[RB]++;
 }
 
@@ -50,8 +50,8 @@ void	rr(t_stack **a, t_stack **b, t_config *cfg)
 {
 	rotate(a);
 	rotate(b);
-	if (cfg && !cfg->bench)
+	if (cfg && cfg->bench == 0)
 		write(1, "rr\n", 3);
-	if (cfg && cfg->bench)
+	if (cfg && cfg->bench == 1)
 		cfg->ops[RR]++;
 }

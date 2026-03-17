@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 15:57:10 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/17 12:58:07 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/17 16:12:13 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include <unistd.h>
 # include "../libft/libft.h"
 
-int		ft_printf(const char *str, ...);
-int		ft_print_nbr(int n);
-int		ft_print_hex(unsigned int n, char *base);
-int		ft_print_ptr(void *ptr);
-int		handle_format(const char format, va_list args);
-int		ft_print_float(double n, int precision);
+int		ft_printf(int fd, const char *str, ...);
+int		ft_print_nbr(int fd, int n);
+int		ft_print_hex(int fd, unsigned int n, char *base);
+int		ft_print_ptr(int fd, void *ptr);
+int		handle_format(int fd, const char format, va_list args);
+int		ft_print_float(int fd, double n, int precision);
 #endif

@@ -6,29 +6,29 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 13:22:05 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/12 15:31:30 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/17 16:49:41 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_put_hex(unsigned int n, char *base)
+static int	ft_put_hex(int fd, unsigned int n, char *base)
 {
 	int		count;
 
 	count = 0;
 	if (n >= 16)
-		count += ft_put_hex(n / 16, base);
-	count += write(1, &base[n % 16], 1);
+		count += ft_put_hex(fd, (n / 16), base);
+	count += write(fd, &base[n % 16], 1);
 	return (count);
 }
 
-int	ft_print_hex(unsigned int n, char *base)
+int	ft_print_hex(int fd, unsigned int n, char *base)
 {
-	return (ft_put_hex(n, base));
+	return (ft_put_hex(fd, n, base));
 }
 
-int	ft_print_nbr(int n)
+int	ft_print_nbr(int fd, int n)
 {
 	long	nb;
 	int		count;
@@ -37,16 +37,16 @@ int	ft_print_nbr(int n)
 	nb = (long)n;
 	if (nb < 0)
 	{
-		count += write(1, "-", 1);
+		count += write(fd, "-", 1);
 		nb = -nb;
 	}
 	if (nb >= 10)
-		count += ft_print_nbr(nb / 10);
-	count += write(1, &"0123456789"[nb % 10], 1);
+		count += ft_print_nbr(fd, (nb / 10));
+	count += write(fd, &"0123456789"[nb % 10], 1);
 	return (count);
 }
 
-static int	ft_put_ptr(unsigned long n)
+static int	ft_put_ptr(int fd, unsigned long n)
 {
 	int		count;
 	char	*base;
@@ -54,19 +54,19 @@ static int	ft_put_ptr(unsigned long n)
 	base = "0123456789abcdef";
 	count = 0;
 	if (n >= 16)
-		count += ft_put_ptr(n / 16);
-	count += write(1, &base[n % 16], 1);
+		count += ft_put_ptr(fd, (n / 16));
+	count += write(fd, &base[n % 16], 1);
 	return (count);
 }
 
-int	ft_print_ptr(void *ptr)
+int	ft_print_ptr(int fd, void *ptr)
 {
 	int	count;
 
 	if (!ptr)
-		return (write(1, "(nil)", 5));
+		return (write(fd, "(nil)", 5));
 	count = 0;
-	count += write(1, "0x", 2);
-	count += ft_put_ptr((unsigned long)ptr);
+	count += write(fd, "0x", 2);
+	count += ft_put_ptr(fd, (unsigned long)ptr);
 	return (count);
 }

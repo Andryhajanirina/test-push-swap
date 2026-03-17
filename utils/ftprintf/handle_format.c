@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 17:31:13 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/16 16:54:50 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/17 18:14:26 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,44 +18,44 @@ static int	ft_print_char(int c)
 	return (1);
 }
 
-static int	ft_print_str(char *str)
+static int	ft_print_str(int fd, char *str)
 {
 	if (!str)
-		return (write(1, "(null)", 6));
-	return (write(1, str, ft_strlen(str)));
+		return (write(2, "(null)", 6));
+	return (write(fd, str, ft_strlen(str)));
 }
 
-static int	ft_print_unsigned(unsigned int n)
+static int	ft_print_unsigned(int fd, unsigned int n)
 {
 	unsigned int	count;
 
 	count = 0;
 	if (n >= 10)
-		count += ft_print_unsigned(n / 10);
-	count += write(1, &"0123456789"[n % 10], 1);
+		count += ft_print_unsigned(fd, (n / 10));
+	count += write(fd, &"0123456789"[n % 10], 1);
 	return (count);
 }
 
-int	handle_format(const char format, va_list args)
+int	handle_format(int fd, const char format, va_list args)
 {
 	if (format == 'c')
 		return (ft_print_char(va_arg(args, int)));
 	else if (format == 's')
-		return (ft_print_str(va_arg(args, char *)));
+		return (ft_print_str(fd, va_arg(args, char *)));
 	else if (format == 'd' || format == 'i')
-		return (ft_print_nbr(va_arg(args, int)));
+		return (ft_print_nbr(fd, va_arg(args, int)));
 	else if (format == 'f')
-		return (ft_print_float(va_arg(args, double), 6));
+		return (ft_print_float(fd, va_arg(args, double), 6));
 	else if (format == 'u')
-		return (ft_print_unsigned(va_arg(args, unsigned int)));
+		return (ft_print_unsigned(fd, va_arg(args, unsigned int)));
 	else if (format == 'x')
-		return (ft_print_hex(va_arg(args, unsigned int), "0123456789abcdef"));
+		return (ft_print_hex(fd, va_arg(args, unsigned int), "0123456789abcdef"));
 	else if (format == 'X')
-		return (ft_print_hex(va_arg(args, unsigned int), "0123456789ABCDEF"));
+		return (ft_print_hex(fd, va_arg(args, unsigned int), "0123456789ABCDEF"));
 	else if (format == 'p')
-		return (ft_print_ptr(va_arg(args, void *)));
+		return (ft_print_ptr(fd, va_arg(args, void *)));
 	else if (format == '%')
-		return (ft_print_char('%'));
+		return (write(fd, "%", 1));
 	else
 		return (ft_print_char('%') + ft_print_char(format));
 	return (0);

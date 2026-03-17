@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:44:18 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/17 12:58:44 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/17 16:44:35 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static long	ft_power10(int n)
 	return (result);
 }
 
-static int	print_decimals(double decimal, int precision)
+static int	print_decimals(int fd, double decimal, int precision)
 {
 	long	frac;
 	long	div;
@@ -35,13 +35,13 @@ static int	print_decimals(double decimal, int precision)
 	while (precision-- > 0)
 	{
 		digit = (frac / div) % 10 + '0';
-		count += write(1, &digit, 1);
+		count += write(fd, &digit, 1);
 		div /= 10;
 	}
 	return (count);
 }
 
-int	ft_print_float(double n, int precision)
+int	ft_print_float(int fd, double n, int precision)
 {
 	int		count;
 	long	integer;
@@ -50,13 +50,13 @@ int	ft_print_float(double n, int precision)
 	count = 0;
 	if (n < 0)
 	{
-		count += write(1, "-", 1);
+		count += write(fd, "-", 1);
 		n = -n;
 	}
 	integer = (long)n;
 	decimal = n - integer;
-	count += ft_print_nbr(integer);
-	count += write(1, ".", 1);
-	count += print_decimals(decimal, precision);
+	count += ft_print_nbr(fd, integer);
+	count += write(fd, ".", 1);
+	count += print_decimals(fd, decimal, precision);
 	return (count);
 }

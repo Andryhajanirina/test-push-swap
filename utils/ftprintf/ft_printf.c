@@ -6,13 +6,13 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 15:57:10 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/16 16:49:44 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/17 16:47:42 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	handle_precision(const char *str, int *i, va_list args)
+static int	handle_precision(int fd, const char *str, int *i, va_list args)
 {
 	int		precision;
 	double	val;
@@ -27,12 +27,12 @@ static int	handle_precision(const char *str, int *i, va_list args)
 	if (str[*i] == 'f')
 	{
 		val = va_arg(args, double);
-		return (ft_print_float(val, precision));
+		return (ft_print_float(fd, val, precision));
 	}
-	return (write(1, &str[*i], 1));
+	return (write(fd, &str[*i], 1));
 }
 
-int	ft_printf(const char *str, ...)
+int	ft_printf(int fd, const char *str, ...)
 {
 	va_list	args;
 	int		i;
@@ -49,12 +49,12 @@ int	ft_printf(const char *str, ...)
 		{
 			i++;
 			if (str[i] == '.')
-				count += handle_precision(str, &i, args);
+				count += handle_precision(fd, str, &i, args);
 			else
-				count += handle_format(str[i], args);
+				count += handle_format(fd, str[i], args);
 		}
 		else
-			count += write(1, &str[i], 1);
+			count += write(fd, &str[i], 1);
 	}
 	va_end(args);
 	return (count);
