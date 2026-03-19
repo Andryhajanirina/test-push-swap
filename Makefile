@@ -21,6 +21,7 @@ SRCS        += parsing/check_numbers.c \
 
 SRCS        += sorting/index_stack.c \
 			sorting/radix_sort.c \
+			sorting/complex_sort.c \
 			sorting/sort_3.c \
 			sorting/sort_5.c \
 			sorting/simple_sort.c \

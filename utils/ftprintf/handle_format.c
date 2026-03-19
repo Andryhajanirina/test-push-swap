@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 17:31:13 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/17 18:14:26 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/19 17:50:27 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int	handle_format(int fd, const char format, va_list args)
 	else if (format == 'u')
 		return (ft_print_unsigned(fd, va_arg(args, unsigned int)));
 	else if (format == 'x')
-		return (ft_print_hex(fd, va_arg(args, unsigned int), "0123456789abcdef"));
+		return (ft_print_hex(fd, va_arg(args, unsigned int), 'x'));
 	else if (format == 'X')
-		return (ft_print_hex(fd, va_arg(args, unsigned int), "0123456789ABCDEF"));
+		return (ft_print_hex(fd, va_arg(args, unsigned int), 'X'));
 	else if (format == 'p')
 		return (ft_print_ptr(fd, va_arg(args, void *)));
 	else if (format == '%')

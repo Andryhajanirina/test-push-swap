@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:31:54 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/16 15:50:01 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:49:54 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	index_stack(t_stack *a);
 void	sort_3(t_stack **a, t_config *cfg);
 void	sort_5(t_stack **a, t_stack **b, t_config *cfg);
 void	radix_sort(t_stack **a, t_stack **b, t_config *cfg);
+void    radix_sort_2bits(t_stack **a, t_stack **b, t_config *cfg);
+void    quicksort_stack(t_stack **a, t_stack **b, int size, t_config *cfg);
 void	simple_sort(t_stack **a, t_stack **b, t_config *cfg);
 void	medium_sort(t_stack **a, t_stack **b, t_config *cfg);
 void	assign_index(t_stack *stack, int *arr, int size);

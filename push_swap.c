@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:13:44 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/17 17:58:56 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:05:46 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,16 @@ static void	print_strategy(int fd, float disorder, t_config cfg)
 	{
 		if (disorder < 0.2)
 			ft_printf(fd, "[bench] strategy: Adaptive / O(n²)\n");
-		else if (disorder >= 0.2 && disorder <= 0.5)
+		else if (disorder >= 0.2 && disorder < 0.5)
+			ft_printf(fd, "[bench] strategy: Adaptive / O(n√n)\n");
+		else
+			ft_printf(fd, "[bench] strategy: Adaptive / O(n log n)\n");
+	}
+	else
+	{
+		if (disorder < 0.2)
+			ft_printf(fd, "[bench] strategy: Adaptive / O(n²)\n");
+		else if (disorder >= 0.2 && disorder < 0.5)
 			ft_printf(fd, "[bench] strategy: Adaptive / O(n√n)\n");
 		else
 			ft_printf(fd, "[bench] strategy: Adaptive / O(n log n)\n");
@@ -65,10 +74,13 @@ static void	choose_strategy(t_stack **a, t_stack **b, t_config *cfg)
 	dis = compute_disorder(a);
 	if (size < 2)
 		return ;
-	if (cfg->complex || (cfg->adaptive && dis > 0.5 && size > 100))
-		radix_sort(a, b, cfg);
-	else if (cfg->medium || (cfg->adaptive && dis >= 0.2 && dis <= 0.5))
+	if (cfg->simple || (cfg->adaptive && dis < 0.2) || dis < 0.2 || size <= 5)
+		simple_sort(a, b, cfg);
+	else if (cfg->medium || (dis >= 0.2 && dis < 0.5) || size <= 100
+		|| (cfg->adaptive && dis < 0.5 && size <= 100))
 		medium_sort(a, b, cfg);
+	else if (cfg->complex || dis >= 0.5)
+		quicksort_stack(a, b, size, cfg);
 	else
 		simple_sort(a, b, cfg);
 }

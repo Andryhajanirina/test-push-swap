@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 13:22:05 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/17 16:49:41 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/19 17:49:27 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ static int	ft_put_hex(int fd, unsigned int n, char *base)
 	return (count);
 }
 
-int	ft_print_hex(int fd, unsigned int n, char *base)
+int	ft_print_hex(int fd, unsigned int n, char base)
 {
-	return (ft_put_hex(fd, n, base));
+	if (base == 'X')
+		return (ft_put_hex(fd, n, "0123456789ABCDEF"));
+	return (ft_put_hex(fd, n, "0123456789abcdef"));
 }
 
 int	ft_print_nbr(int fd, int n)

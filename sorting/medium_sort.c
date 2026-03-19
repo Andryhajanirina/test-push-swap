@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 13:51:31 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/17 18:08:43 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:44:06 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,24 @@ static int	find_max_pos(t_stack *b)
 static void	move_max_top(t_stack **b, t_config *cfg)
 {
 	int	pos;
-	int	size;
+	int	b_size;
 
 	pos = find_max_pos(*b);
-	size = stack_size(*b);
-	if (pos <= size / 2)
+	b_size = stack_size(*b);
+	if (pos <= b_size / 2)
 	{
 		while (pos--)
 			rb(b, cfg);
 	}
 	else
 	{
-		pos = size - pos;
+		pos = b_size - pos;
 		while (pos--)
 			rrb(b, cfg);
 	}
 }
 
-int	ft_sqrt_ceil(int nb)
+static int	ft_sqrt_ceil(int nb)
 {
 	int	i;
 
@@ -68,21 +68,20 @@ int	ft_sqrt_ceil(int nb)
 
 void	medium_sort(t_stack **a, t_stack **b, t_config *cfg)
 {
+	int	i;
 	int	chunk;
-	int	pushed;
 
-	if (!a || !*a)
-		return ;
+	i = 0;
 	chunk = ft_sqrt_ceil(stack_size(*a));
-	pushed = -1;
 	while (*a)
 	{
-		if ((*a)->index <= pushed && ++pushed)
+		if ((*a)->index <= i)
 		{
 			pb(a, b, cfg);
 			rb(b, cfg);
+			i++;
 		}
-		else if ((*a)->index <= pushed + chunk && ++pushed)
+		else if ((*a)->index <= i + chunk && ++i)
 			pb(a, b, cfg);
 		else
 			ra(a, cfg);
