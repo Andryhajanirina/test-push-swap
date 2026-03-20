@@ -6,15 +6,16 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 17:31:13 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/19 17:50:27 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/20 15:04:32 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_print_char(int c)
+// static int	ft_print_char(int c)
+static int	ft_print_char(int fd, int c)
 {
-	ft_putchar_fd(c, 1);
+	ft_putchar_fd(c, fd);
 	return (1);
 }
 
@@ -39,7 +40,7 @@ static int	ft_print_unsigned(int fd, unsigned int n)
 int	handle_format(int fd, const char format, va_list args)
 {
 	if (format == 'c')
-		return (ft_print_char(va_arg(args, int)));
+		return (ft_print_char(fd, va_arg(args, int)));
 	else if (format == 's')
 		return (ft_print_str(fd, va_arg(args, char *)));
 	else if (format == 'd' || format == 'i')
@@ -57,6 +58,6 @@ int	handle_format(int fd, const char format, va_list args)
 	else if (format == '%')
 		return (write(fd, "%", 1));
 	else
-		return (ft_print_char('%') + ft_print_char(format));
+		return (ft_print_char(fd, '%') + ft_print_char(fd, format));
 	return (0);
 }

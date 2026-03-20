@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:31:54 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/20 09:17:31 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/20 15:50:50 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 # include "../push_swap.h"
 # include "../utils/utils.h"
 # include "../operations/operations.h"
+
+typedef struct s_sort_ctx
+{
+	t_stack		**a;
+	t_stack		**b;
+	t_config	*cfg;
+	int			i;
+	int			chunk;
+}	t_sort_ctx;
 
 void	index_stack(t_stack *a);
 void	sort_3(t_stack **a, t_config *cfg);

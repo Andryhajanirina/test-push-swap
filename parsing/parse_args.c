@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 14:50:30 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/17 18:01:29 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/20 14:48:00 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ static void	init_config(t_config *cfg)
 
 static int	set_flag(char *arg, t_config *cfg)
 {
-	if (!ft_strncmp(arg, "--simple", 9))
+	if (!ft_strncmp(arg, "--simple", 8) && arg[8] == '\0')
 		return (cfg->simple = 1);
-	if (!ft_strncmp(arg, "--medium", 9))
+	if (!ft_strncmp(arg, "--medium", 8) && arg[8] == '\0')
 		return (cfg->medium = 1);
-	if (!ft_strncmp(arg, "--complex", 10))
+	if (!ft_strncmp(arg, "--complex", 9) && arg[9] == '\0')
 		return (cfg->complex = 1);
-	if (!ft_strncmp(arg, "--adaptive", 11))
+	if (!ft_strncmp(arg, "--adaptive", 10) && arg[10] == '\0')
 		return (cfg->adaptive = 1);
-	if (!ft_strncmp(arg, "--bench", 8))
+	if (!ft_strncmp(arg, "--bench", 7) && arg[7] == '\0')
 		return (cfg->bench = 1);
 	return (0);
 }
