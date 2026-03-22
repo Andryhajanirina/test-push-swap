@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:13:44 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/20 15:12:16 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/03/22 13:15:46 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 
 static void	print_strategy(int fd, float disorder, t_config cfg)
 {
-	if (cfg.simple)
+	if (cfg.mode == 1)
 		ft_printf(fd, "[bench] strategy: Simple / O(n²)\n");
-	else if (cfg.medium)
+	else if (cfg.mode == 2)
 		ft_printf(fd, "[bench] strategy: Medium / O(n√n)\n");
-	else if (cfg.complex)
+	else if (cfg.mode == 3)
 		ft_printf(fd, "[bench] strategy: Complex / O(n log n)\n");
-	else if (cfg.adaptive)
+	else if (cfg.mode == 4)
 	{
 		if (disorder < 0.2)
 			ft_printf(fd, "[bench] strategy: Adaptive / O(n²)\n");
@@ -74,15 +74,18 @@ static void	choose_strategy(t_stack **a, t_stack **b, t_config *cfg)
 	dis = compute_disorder(a);
 	if (size < 2)
 		return ;
-	if (cfg->simple || (cfg->adaptive && dis < 0.2) || dis < 0.2 || size <= 5)
-		simple_sort(a, b, cfg);
-	else if (cfg->medium || (dis >= 0.2 && dis < 0.5) || size <= 100
-		|| (cfg->adaptive && dis < 0.5 && size <= 100))
-		medium_sort(a, b, cfg);
-	else if (cfg->complex || dis >= 0.5)
-		quicksort_stack(a, b, size, cfg);
+	if (cfg->mode == 1)
+		return (simple_sort(a, b, cfg));
+	if (cfg->mode == 2)
+		return (medium_sort(a, b, cfg));
+	if (cfg->mode == 3)
+		return (quicksort_stack(a, b, size, cfg));
+	if (dis < 0.2 || (cfg->mode == 4 && dis < 0.2) || size <= 5)
+		return (simple_sort(a, b, cfg));
+	else if (dis <= 0.5 || (cfg->mode == 4 && dis <= 0.5) || size <= 100)
+		return (medium_sort(a, b, cfg));
 	else
-		simple_sort(a, b, cfg);
+		return (quicksort_stack(a, b, size, cfg));
 }
 
 int	main(int argc, char **argv)
