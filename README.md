@@ -1,16 +1,135 @@
 *This project has been created as part of the 42 curriculum by andry-ha, mamiandr.*
 
 # Description
----
+
 ## What is push swap ?
-``push_swap`` is a program which calculates and displays on the standard output the smallest program, made of Push swap language operations, that sorts the integers received as arguments.
+``push_swap`` is a program which calculates and displays on the standard output the smallest program,  
+made of Push swap language operations, that sorts the integers received as arguments.
 
 ## Goal
-The goal of this project is to make you discover algorithmic complexity in a very
-concrete way.
+The goal of this project is to help us discover algorithmic complexities in a very concrete way.
 
-# Detailed explaination and algorythme :
----
+## The rules
+* We have <font color="cyan">2</font> stacks named <font color="orange">a</font> and <font color="orange">b</font>.
+* At the beginning:
+	* The stack <font color="orange">a</font> contains a random amount of negative and/or positive numbers
+	without any duplicate.
+	* The stack <font color="orange">b</font> is empty.
+* The goal is <font color="orange">to sort in ascending order numbers into stack a</font>. To do so you have the
+following operations at your disposal: ``swap`` ``rotate`` ``reverse_rotate`` ``push``
+
+## Required strategies :
+To enforce a rigorous understanding of algorithmic complexity (time and space),  
+we must implement four distinct sorting strategies and integrate them into our ``push_swap`` program
+* Simple algorithm (O(n²))
+* Medium algorithm (O(n√n))
+* Complex algorithm (O(n log n)):
+* Custom adaptive algorithm (learner’s design)
+
+# Instructions
+### Installation
+```Shell
+git@vogsphere.42antananarivo.mg:vogsphere/intra-uuid-[intra-uuid]-[login]
+cd folder_name
+
+#And type the command `make` to compile the program.
+make
+```
+
+```Shell
+#Once compiled, you should have a program named `push_swap`. You can run the program as follows:
+./push_swap 2 1 3 6 5 8
+
+ARG="4 67 3 87 23"; ./push_swap --complex $ARG | ./checker_linux $ARG
+
+ARG="4 67 3 87 23"; ./push_swap --adaptive $ARG | wc -l
+```
+
+
+# Detailed explaination and algorythme :  
+* In the <font color="orange">simple algorithm (O(n²)) strategy</font>, we chose the sort insertion method for its simplicity. It is very easy to understand and code, ideal for learning.  
+Its time complexity is always O(n²), regardless of the initial order of the data.
+**Selection sort** involves virtually dividing a list into two parts: a sorted part (on the left) and an unsorted part (on the right).  
+The algorithm progressively moves elements from the unsorted part to the sorted part by following these steps:
+	1. **Find the smallest**: Start at the first position and scan the rest of the list to find the lowest value.
+	2. **Swap**: Swap that lowest value with the element at the current starting position.
+	3. **Advance**: Move the boundary of the "sorted" section one step to the right.
+	4. **Repeat**: Continue until the entire list is sorted.
+
+* In the <font color="orange">Medium algorithm (O(n√n))</font>, we chose the chunk-based sorting (divide into <font color="orange">√n</font> chunks)  
+Instead of scanning every single element to find the minimum (which takes <font color="orange">O(n)</font> time), you divide the array into <font color="orange">√n</font> blocks, each of size √n.
+	1. **Preprocessing**: For each block, we pre-calculate and store its local minimum.
+	2. **Finding the Global Minimum**: To find the smallest element in the entire array, we only compare the √n local minima of the blocks.  
+	This takes <font color="orange">O(√n)</font> time instead of <font color="orange">O(n)</font>.
+	3. **Update**: Once the element has been extracted and moved to the sorted part,  
+	only the minimum of the block concerned is updated (by traversing its <font color="orange">√n</font> remaining elements).
+	4. **Repeat**: We repeat this process <font color="orange">n</font> times until all elements are sorted.
+
+* In the <font color="orange">Complex algorithm (O(n log n))</font>, we chose the Quick sort adaptation with stack partitioning.  
+Instead of the function calling itself to handle the left and right sub-arrays, you manually push the boundaries (low and high indices) onto a stack.  
+	1. **Initialize**: Push the initial low and high indices of the array onto the stack.  
+	2. **Loop**: While the stack is not empty:  
+		a. **Pop**: Get the low and high indices for the current segment.  
+		b. **Partition**: Pick a pivot and rearrange the array (just like standard Quick Sort). The pivot is now in its final sorted position.  
+		c. **Push**: Push the boundaries of the two new unsorted segments (left of pivot and right of pivot) back onto the stack.  
+	3. **Finish**: The process repeats until the stack is empty.
+
+## ***Notes***
+```C
+Before choosing the best strategy to apply for sorting, we need to calculate the disorder
+```
+### Method for Measuring Array Disorder:
+```C
+/**Inversion Counting O(nlogn): The most common measure of disorder for numerical arrays is the number of inversions.
+An inversion is a pair of elements A[i], A[j] such that i < j but A[i] > A[j].
+
+* A sorted array has 0 inversions;
+* A reversed array has ( (n(n-1)) / 2) inversions.
+
+For numerical data, a common quick check for disorder is simply (number of inversions / max possible inversions)
+
+For example :
+Input: arr[] = [2, 4, 1, 3, 5]
+Number of inversions or the total of pairs : 3
+Explanation: The sequence 2, 4, 1, 3, 5 has three inversions (2, 1), (4, 1), (4, 3).
+Output disorder : 0.30
+*/
+float	compute_disorder(int stack[], int size)
+{
+	int		mistakes;
+	int		total_pairs;
+	int i;
+    int j;
+
+	mistakes = 0;
+	total_pairs = 0;
+    i = 0;
+	while (i < size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			total_pairs++;
+			if (stack[i] > stack[j])
+				mistakes++;
+			j++;
+		}
+		i++;
+	}
+	if (total_pairs == 0)
+		return (0.0);
+	return ((float)mistakes / (float)total_pairs);
+}
+```
+
+
+
+
+
+
+
+
+
 ## Operations in push swap : ``swap`` ``rotate`` ``reverse_rotate`` ``push``
 Let’s explain some push swap rules, and know how we can move in and between the stacks:
 
@@ -130,49 +249,6 @@ Otherwise:
 👉 We use rra
 ```
 
-## Method for Measuring Array Disorder:
-```C
-/**Inversion Counting O(nlogn): The most common measure of disorder for numerical arrays is the number of inversions.
-An inversion is a pair of elements A[i], A[j] such that i < j but A[i] > A[j].
-
-* A sorted array has 0 inversions;
-* A reversed array has ( (n(n-1)) / 2) inversions.
-
-For numerical data, a common quick check for disorder is simply (number of inversions / max possible inversions)
-
-For example :
-Input: arr[] = [2, 4, 1, 3, 5]
-Number of inversions or the total of pairs : 3
-Explanation: The sequence 2, 4, 1, 3, 5 has three inversions (2, 1), (4, 1), (4, 3).
-Output disorder : 0.30
-*/
-float	compute_disorder(int stack[], int size)
-{
-	int		mistakes;
-	int		total_pairs;
-	int i;
-    int j;
-
-	mistakes = 0;
-	total_pairs = 0;
-    i = 0;
-	while (i < size - 1)
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			total_pairs++;
-			if (stack[i] > stack[j])
-				mistakes++;
-			j++;
-		}
-		i++;
-	}
-	if (total_pairs == 0)
-		return (0.0);
-	return ((float)mistakes / (float)total_pairs);
-}
-```
 ## Radix sort explanation
 ```C
 static int	get_max_bits(int size)
@@ -250,6 +326,7 @@ void	radix_sort_2bits(t_stack **a, t_stack **b, t_config *cfg)
 		i += 2; // On avance de 2 bits
 	}
 }
+```
 
 ```md
 push_swap/
