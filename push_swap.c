@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:13:44 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/22 13:15:46 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/04/01 15:55:38 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,13 @@ static void	choose_strategy(t_stack **a, t_stack **b, t_config *cfg)
 	if (cfg->mode == 2)
 		return (medium_sort(a, b, cfg));
 	if (cfg->mode == 3)
-		return (quicksort_stack(a, b, size, cfg));
+		return (complex_sort(a, b, cfg));
 	if (dis < 0.2 || (cfg->mode == 4 && dis < 0.2) || size <= 5)
 		return (simple_sort(a, b, cfg));
 	else if (dis <= 0.5 || (cfg->mode == 4 && dis <= 0.5) || size <= 100)
 		return (medium_sort(a, b, cfg));
 	else
-		return (quicksort_stack(a, b, size, cfg));
+		return (complex_sort(a, b, cfg));
 }
 
 int	main(int argc, char **argv)

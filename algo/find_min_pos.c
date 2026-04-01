@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   find_min_pos.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/26 16:00:22 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/31 16:22:26 by andry-ha         ###   ########.fr       */
+/*   Created: 2026/04/01 15:03:03 by andry-ha          #+#    #+#             */
+/*   Updated: 2026/04/01 15:58:08 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "algo.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include "utils/ftprintf/ft_printf.h"
-
-typedef struct s_stack
+int	find_min_pos(t_stack *a)
 {
-	int				value;
-	int				index;
-	struct s_stack	*next;
-}	t_stack;
+	t_stack	*min;
+	int		pos;
 
-typedef struct s_config
-{
-	int	mode;
-	int	bench;
-	int	ops[11];
-}	t_config;
-#endif
+	min = find_min(a);
+	pos = 0;
+	while (a)
+	{
+		if (a == min)
+			return (pos);
+		pos++;
+		a = a->next;
+	}
+	return (0);
+}

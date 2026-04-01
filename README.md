@@ -42,7 +42,13 @@ make
 
 ARG="4 67 3 87 23"; ./push_swap --complex $ARG | ./checker_linux $ARG
 
+ARG="4 67 3 87 23"; ./push_swap --bench --adaptive $ARG 2> bench.txt| ./checker_linux $ARG
+
 ARG="4 67 3 87 23"; ./push_swap --adaptive $ARG | wc -l
+
+shuf -i 0-9999 -n 500 > args.txt ; ./push_swap $(cat args.txt) | wc -l
+
+shuf -i 0-9999 -n 500 > args.txt ; ./push_swap --bench $(cat args.txt) 2> bench.txt | ./checker_linux $(cat args.txt)
 ```
 
 

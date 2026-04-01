@@ -6,7 +6,7 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:31:54 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/17 12:57:22 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/04/01 15:32:38 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	free_stack(t_stack **stack);
 int		ft_atoi_safe(const char *str, int *out);
 void	ft_free_split(char **split);
 t_stack	*find_min(t_stack *stack);
+t_stack	*find_max(t_stack *stack);
 
 #endif

@@ -19,6 +19,11 @@ SRCS        += parsing/check_numbers.c \
 			parsing/stack_init.c \
 			parsing/parse_args.c
 
+SRCS        += algo/cost_to_top.c \
+			algo/find_min_pos.c \
+			algo/move.c \
+			algo/target_pos.c
+
 SRCS        += sorting/index_stack.c \
 			sorting/radix_sort.c \
 			sorting/complex_sort.c \

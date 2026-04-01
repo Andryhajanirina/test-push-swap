@@ -6,117 +6,44 @@
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 13:11:17 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/03/19 17:28:25 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/04/01 16:20:30 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sorting.h"
+#include "../algo/algo.h"
 
-static void	small_sort_n(t_stack **a, t_config *cfg, int size)
+static void	final_rotate(t_stack **a, t_config *cfg)
 {
-	if (size == 3)
-		sort_3(a, cfg);
+	int	pos;
+	int	size;
+
+	pos = find_min_pos(*a);
+	size = stack_size(*a);
+	if (pos <= size / 2)
+		while (pos--)
+			ra(a, cfg);
 	else
-	{
-		if ((*a)->index > (*a)->next->index)
-			sa(a, cfg);
-	}
+		while (pos++ < size)
+			rra(a, cfg);
 }
 
-static int	get_pivot(t_stack *stack, int size)
+void	complex_sort(t_stack **a, t_stack **b, t_config *cfg)
 {
-	int		min;
-	int		max;
-	int		i;
-	t_stack	*tmp;
+	int	size;
+	int	limit;
 
-	if (!stack)
-		return (0);
-	tmp = stack;
-	min = tmp->index;
-	max = tmp->index;
-	i = 0;
-	while (i++ < size && tmp)
+	size = stack_size(*a);
+	limit = size - 3;
+	while (stack_size(*a) > 3)
 	{
-		if (tmp->index < min)
-			min = tmp->index;
-		if (tmp->index > max)
-			max = tmp->index;
-		tmp = tmp->next;
-	}
-	return ((min + max) / 2);
-}
-
-/* void	quicksort_stack(t_stack **a, t_stack **b, int size, t_config *cfg)
-{
-	int	pivot;
-	int	pushed;
-	int	rotated;
-	int	count;
-
-	if (size == 3) // Condition d'arrêt pour les petites partitions
-	{
-		sort_3(a, cfg);
-		return ; 
-	}
-
-	if (size == 2) // Condition d'arrêt pour les petites partitions
-	{
-		if ((*a)->index > (*a)->next->index)
-			sa(a, cfg);
-		return;
-	}
-
-	pivot = get_pivot(*a, size);
-	pushed = 0;
-	rotated = 0;
-	count = size;
-	while (count--)
-	{
-		if ((*a)->index < pivot)
-		{
+		if ((*a)->index < limit)
 			pb(a, b, cfg);
-			pushed++;
-		}
 		else
-		{
-			ra(a, cfg);
-			rotated++;
-		}
-	}
-	int i = rotated;
-	while (i--)
-		rra(a, cfg);
-
-	// On trie récursivement la partie restée dans A (les grands)
-	quicksort_stack(a, b, size - pushed, cfg);
-	
-	// On trie la partie envoyée dans B (les petits) et on les remonte
-	while (pushed--)
-		pa(a, b, cfg);
-} */
-
-void	quicksort_stack(t_stack **a, t_stack **b, int size, t_config *cfg)
-{
-	int	pivot;
-	int	pushed;
-	int	rotated;
-
-	if (size <= 3)
-		return (small_sort_n(a, cfg, size));
-	pivot = get_pivot(*a, size);
-	pushed = 0;
-	rotated = 0;
-	while (pushed + rotated < size)
-	{
-		if ((*a)->index < pivot && ++pushed)
-			pb(a, b, cfg);
-		else if (++rotated)
 			ra(a, cfg);
 	}
-	while (rotated--)
-		rra(a, cfg);
-	quicksort_stack(a, b, size - pushed, cfg);
-	while (pushed--)
-		pa(a, b, cfg);
+	sort_3(a, cfg);
+	while (*b)
+		best_move(a, b, cfg);
+	final_rotate(a, cfg);
 }
