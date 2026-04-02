@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   best_move.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andry-ha <andry-ha@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 15:08:44 by andry-ha          #+#    #+#             */
-/*   Updated: 2026/04/01 16:19:27 by andry-ha         ###   ########.fr       */
+/*   Updated: 2026/04/02 10:56:29 by andry-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,15 @@ void	best_move(t_stack **a, t_stack **b, t_config *cfg)
 	int		pos;
 	int		cost[3];
 	int		best[3];
+	int		target;
 
 	tmp = *b;
 	pos = 0;
 	best[BEST_TOTAL] = 2147483647;
 	while (tmp)
 	{
-		cost[COST_A] = calc_cost(stack_size(*a), target_pos(*a, tmp->index));
+		target = target_pos(*a, tmp->index, pos, best[BEST_TOTAL]);
+		cost[COST_A] = calc_cost(stack_size(*a), target);
 		cost[COST_B] = calc_cost(stack_size(*b), pos++);
 		cost[COST_TOTAL] = ft_abs(cost[COST_A]) + ft_abs(cost[COST_B]);
 		if (cost[COST_TOTAL] < best[2])

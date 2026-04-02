@@ -21,11 +21,10 @@ SRCS        += parsing/check_numbers.c \
 
 SRCS        += algo/cost_to_top.c \
 			algo/find_min_pos.c \
-			algo/move.c \
+			algo/best_move.c \
 			algo/target_pos.c
 
 SRCS        += sorting/index_stack.c \
-			sorting/radix_sort.c \
 			sorting/complex_sort.c \
 			sorting/sort_3.c \
 			sorting/sort_5.c \
@@ -35,7 +34,7 @@ SRCS        += sorting/index_stack.c \
 SRCS        += utils/free_stack.c \
 			utils/ft_atoi_safe.c \
 			utils/compute_disorder.c \
-			utils/find_min.c \
+			utils/find_min_max.c \
 			utils/stack_utils.c
 
 OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
