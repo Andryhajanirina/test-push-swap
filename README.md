@@ -29,7 +29,7 @@ we must implement four distinct sorting strategies and integrate them into our `
 # Instructions
 ### Installation
 ```Shell
-git@vogsphere.42antananarivo.mg:vogsphere/intra-uuid-[intra-uuid]-[login]
+git clone git@vogsphere.42antananarivo.mg:vogsphere/intra-uuid-[intra-uuid]-[login] folder_name
 cd folder_name
 
 #And type the command `make` to compile the program.
@@ -127,12 +127,6 @@ float	compute_disorder(int stack[], int size)
 	return ((float)mistakes / (float)total_pairs);
 }
 ```
-
-
-
-
-
-
 
 
 
